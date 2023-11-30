@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Nav from "./components/Nav";
 import DownloadArea from "./components/DownloadArea";
 import ListStream from "./components/ListStream";
+import Loading from "./components/Loading"
 
 let requestOptions = {
 	method: "GET",
@@ -13,13 +14,16 @@ let requestOptions = {
 	},
 };
 
-let baseUrl = "http://localhost:8000";
+let baseUrl = import.meta.env.VITE_BASE_URL;
 
 function App() {
 	const [result, setResult] = useState({});
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handleDownloadClick = (url) => {
 		let raw = JSON.stringify({ url: url });
+		setResult({});
+		setIsLoading(true);
 		fetch(`${baseUrl}/api/v1/download/`, {
 			...requestOptions,
 			method: "POST",
@@ -29,18 +33,24 @@ function App() {
 			.then((result) => {
 				console.log(result);
 				setResult(result);
+				setIsLoading(false);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
-
+	
 	return (
 		<div className="container px-5">
 			<Nav />
 			<DownloadArea onDownloadClick={handleDownloadClick} />
-			<hr />
-			{result.streams && <ListStream streams={result.streams} title={result.title} />}
+			{ isLoading && <Loading /> }
+			{result.streams && (
+				<>
+					<hr />
+					<ListStream streams={result.streams} title={result.title} />
+				</>
+			)}
 		</div>
 	);
 }

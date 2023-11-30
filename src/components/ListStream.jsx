@@ -36,19 +36,6 @@ const ListStream = ({ streams, title }) => {
 									</div>
 								</div>
 							</div>
-
-							{/* <div className={"d-flex" + (stream.resolution ? " gap-5": "")}>
-									<a>{stream.resolution}</a>
-									<a>{stream.mime_type}</a>
-								</div>
-								<div className="d-flex gap-4 text-center align-items-center justify-content-center">
-									<span className="badge bg-primary rounded-pill">
-										{stream.file_size} KB
-									</span>
-									<a href={stream.url} target="_blank">
-										Download
-									</a>
-								</div> */}
 						</li>
 					);
 				})}
