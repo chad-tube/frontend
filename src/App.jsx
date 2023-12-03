@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Nav from "./components/Nav";
 import DownloadArea from "./components/DownloadArea";
 import ListStream from "./components/ListStream";
-import Loading from "./components/Loading"
+import Loading from "./components/Loading";
+import Thumbnail from "./components/Thumbnail";
 
 let requestOptions = {
 	method: "GET",
@@ -39,12 +40,18 @@ function App() {
 				console.log(err);
 			});
 	};
-	
+
 	return (
 		<div className="container px-5">
 			<Nav />
 			<DownloadArea onDownloadClick={handleDownloadClick} />
-			{ isLoading && <Loading /> }
+			{isLoading && <Loading />}
+			{result.thumbnail && (
+				<>
+					<hr />
+					<Thumbnail thumbnail={result.thumbnail} />
+				</>
+			)}
 			{result.streams && (
 				<>
 					<hr />

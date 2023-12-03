@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Thumbnail = () => {
-  return (
-    <div>Thumbnail</div>
-  )
-}
+	return (
+		<div className="thumbnail">
+			<img src="https://via.placeholder.com/150" alt="thumbnail" />
+		</div>
+	);
+};
 
-export default Thumbnail
+export default Thumbnail;
