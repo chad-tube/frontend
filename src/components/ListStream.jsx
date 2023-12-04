@@ -1,10 +1,13 @@
 import React from "react";
 import { FaVolumeMute } from "react-icons/fa";
+import Thumbnail from "./Thumbnail";
 
-const ListStream = ({ streams, title }) => {
+const ListStream = ({ streams, title, thumbnail }) => {
 	return (
 		<>
 			<h3 className="h3 text-center">{title}</h3>
+			<Thumbnail url={thumbnail} />
+			<hr />
 			<ul className="list-group">
 				{streams.map((stream, index) => {
 					return (
@@ -26,7 +29,7 @@ const ListStream = ({ streams, title }) => {
 									</div>
 									<div className="col-sm-4 col-lg-6 text-md-end">
 										<div className="badge bg-primary rounded-pill">
-											{stream.file_size} KB
+											{stream.file_size}
 										</div>
 										<div>
 											<a href={stream.url} target="_blank">

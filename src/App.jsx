@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/src/css/sb-admin-2.min.css";
+import "./assets/src/vendor/jquery/jquery.min.js";
+import "./assets/src/js/sb-admin-2.min.js";
+
+import "./assets/src/vendor/bootstrap/js/bootstrap.bundle.min.js";
+
 import Nav from "./components/Nav";
 import DownloadArea from "./components/DownloadArea";
 import ListStream from "./components/ListStream";
@@ -46,16 +52,10 @@ function App() {
 			<Nav />
 			<DownloadArea onDownloadClick={handleDownloadClick} />
 			{isLoading && <Loading />}
-			{result.thumbnail && (
-				<>
-					<hr />
-					<Thumbnail thumbnail={result.thumbnail} />
-				</>
-			)}
 			{result.streams && (
 				<>
 					<hr />
-					<ListStream streams={result.streams} title={result.title} />
+					<ListStream streams={result.streams} title={result.title} thumbnail={result.thumbnail_url} />
 				</>
 			)}
 		</div>
