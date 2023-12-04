@@ -5,7 +5,7 @@ const Input = ({ onDownloadClick }) => {
 
 	return (
 		<div className="row gy-2 px-md-5">
-			<div className="col-sm-4 col-md-11">
+			<div className="col-sm-10 col-md-11">
 				<input
 					type="text"
 					className="form-control"
