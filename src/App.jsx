@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./assets/src/css/sb-admin-2.min.css";
 import "./assets/src/vendor/jquery/jquery.min.js";
 import "./assets/src/js/sb-admin-2.min.js";
@@ -11,7 +12,6 @@ import Nav from "./components/Nav";
 import DownloadArea from "./components/DownloadArea";
 import ListStream from "./components/ListStream";
 import Loading from "./components/Loading";
-import Thumbnail from "./components/Thumbnail";
 
 let requestOptions = {
 	method: "GET",
@@ -25,6 +25,8 @@ let baseUrl = import.meta.env.VITE_BASE_URL;
 
 function App() {
 	const [result, setResult] = useState({});
+	const [typeChoices, setTypeChoices] = useState([]);
+	const [chosenType, setChosenType] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 
 	const handleDownloadClick = (url) => {
@@ -47,10 +49,26 @@ function App() {
 			});
 	};
 
+	const handleOnTypeChange = (choice) => {
+		setChosenType(choice);
+	}
+
+	useEffect(() => {
+		fetch(`${baseUrl}/api/v1/type-choices/`, requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				setTypeChoices(result.choices);
+				setChosenType(result.choices[0]);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, [])
+
 	return (
 		<div className="container px-5">
 			<Nav />
-			<DownloadArea onDownloadClick={handleDownloadClick} />
+			<DownloadArea onDownloadClick={handleDownloadClick} typeChoices={typeChoices} chosenType={chosenType} onTypeChange={handleOnTypeChange} />
 			{isLoading && <Loading />}
 			{result.streams && (
 				<>
