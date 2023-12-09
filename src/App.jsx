@@ -30,7 +30,7 @@ function App() {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const handleDownloadClick = (url) => {
-		let raw = JSON.stringify({ url: url });
+		let raw = JSON.stringify({ url: url, type_: chosenType.value });
 		setResult({});
 		setIsLoading(true);
 		fetch(`${baseUrl}/api/v1/download/`, {
@@ -66,7 +66,7 @@ function App() {
 	}, [])
 
 	return (
-		<div className="container px-5">
+		<div className="container">
 			<Nav />
 			<DownloadArea onDownloadClick={handleDownloadClick} typeChoices={typeChoices} chosenType={chosenType} onTypeChange={handleOnTypeChange} />
 			{isLoading && <Loading />}
