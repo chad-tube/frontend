@@ -5,8 +5,8 @@ const Input = ({ onDownloadClick, typeChoices, chosenType, onTypeChange }) => {
 	const urlRef = useRef(null);
 
 	return (
-		<div className="row gy-2 px-md-5">
-			<div className="col-sm-10 col-md-10">
+		<div className="row gy-2 px-md-5 justify-content-center">
+			<div className="col-sm-12 col-md-8 col-lg-9 col-xl-9">
 				<input
 					type="text"
 					className="form-control"
@@ -14,10 +14,10 @@ const Input = ({ onDownloadClick, typeChoices, chosenType, onTypeChange }) => {
 					ref={urlRef}
 				/>
 			</div>
-			<div className="col-sm-2 col-md-1">
+			<div className="col-sm-12 col-md-2 col-lg-2 col-xl-1">
 				<Type typeChoices={typeChoices} chosenType={chosenType} onTypeChange={onTypeChange} />
 			</div>
-			<div className="col-sm-2 col-md-1">
+			<div className="col-sm-12 col-md-2 col-lg-1 col-xl-1">
 				<button
 					className="btn btn-primary"
 					onClick={() => {
