@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 import "./assets/src/css/sb-admin-2.min.css";
-import "./assets/src/vendor/jquery/jquery.min.js";
 import "./assets/src/js/sb-admin-2.min.js";
 
 import "./assets/src/vendor/bootstrap/js/bootstrap.bundle.min.js";
