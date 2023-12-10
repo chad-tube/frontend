@@ -1,4 +1,3 @@
-import React from "react";
 import { FaVolumeMute } from "react-icons/fa";
 import Thumbnail from "./Thumbnail";
 

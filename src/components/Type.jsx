@@ -1,4 +1,3 @@
-import React from "react";
 
 const Type = ({ typeChoices, chosenType, onTypeChange }) => {
 	return (

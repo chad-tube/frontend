@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Type from "./Type";
 
 const Input = ({ onDownloadClick, typeChoices, chosenType, onTypeChange }) => {
